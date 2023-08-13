@@ -1,14 +1,15 @@
-[![Build Status](https://github.com/hukkinj1/cosmosvanity/workflows/Tests/badge.svg?branch=master)](https://github.com/hukkinj1/cosmosvanity/actions?query=workflow%3ATests+branch%3Amaster+event%3Apush)
-[![codecov.io](https://codecov.io/gh/hukkinj1/cosmosvanity/branch/master/graph/badge.svg)](https://codecov.io/gh/hukkinj1/cosmosvanity)
-# cosmosvanity
+# stargazevanity
 
 <!--- Don't edit the version line below manually. Let bump2version do it for you. -->
 > Version 1.0.0
 
-> CLI tool for generating [Cosmos](https://cosmos.network) vanity addresses
+> CLI tool for generating [Stargaze](https://stargaze.zone/) vanity addresses
 
-## Features
-* Generate Cosmos bech32 vanity addresses
+
+<details>
+  <summary>Features:</summary>
+  
+* Generate Umee bech32 vanity addresses
 * Use all CPU cores
 * Specify a substring that the addresses must
     * start with
@@ -16,47 +17,75 @@
     * contain
 * Set required minimum amount of letters (a-z) or digits (0-9) in the addresses
 * Binaries built for Linux, macOS and Windows
+  
+</details>
 
-## Installing
-Download the latest binary release from the [_Releases_](https://github.com/hukkinj1/cosmosvanity/releases) page. Alternatively, build from source yourself.
+
+<details>
+  <summary>Installing:</summary>
+  
+Download the latest binary release from the [_Releases_](https://github.com/g0odlike/cosmosvanity/releases) page. 
+
+```sh
+$ go version
+go version go1.17 linux/amd64
+$ git clone https://github.com/Northa/cosmosvanity.git && cd cosmosvanity
+$ go build -o stargazevanity ./main.go
+
+```
+  
+</details>
 
 ## Usage examples
-Find an address that starts with "00000" (e.g. cosmos100000v3fpv4qg2a9ea6sj70gykxpt63wgjen2p)
-```bash
-./cosmosvanity --startswith 00000
+Find an address that starts with "drew" (e.g. [stars1drewfmzk3a90m2ldkhxq0q7haaewkvfges05h0](https://www.mintscan.io/stargaze/accounts/stars1drewfmzk3a90m2ldkhxq0q7haaewkvfges05h0))
+```sh
+./stargazevanity --startswith drew
+:::: Matching wallet 1/1 found ::::
+Address:        stars1drewfmzk3a90m2ldkhxq0q7haaewkvfges05h0
+Public key:     03e6334056ded1918964985d3501f2353a873a1d6c248849fa3c521f7b38a65c96
+Private key:    9482108ab9d71fe7cf8c44c52ce2ea869337cb7a362a4d1cc51346b504054ce1
 ```
 
-Find an address that ends with "8888" (e.g. cosmos134dck5uddzjure8pyprmmqat96k3jlypn28888)
-```bash
-./cosmosvanity --endswith 8888
+Find an address that starts with "nguru" (e.g. stars1ngurugw0m8ultdyr5zqr64puddxd8k5pm6pd80)
+```sh
+./stargazevanity --startswith nguru
+:::: Matching wallet 1/1 found ::::
+Address:        stars1ngurugw0m8ultdyr5zqr64puddxd8k5pm6pd80
+Public key:     03104814aa00a270f20da6ba5d8ae8172b6d4d5954779c180487997a9558041f8c
+Private key:    a79a2db65a5b92bff47bd11253fe880cf0995919bd5e1ab5ce701a909c6af1b1
 ```
 
-Find an address containing the substring "gener" (e.g. cosmos1z39wgener7azgh22s5a3pyswtnjkx2w0hvn3rv)
+Find an address that ends with "8888" (e.g. stars134dck5uddzjure8pyprmmqat96k3jlypn28888)
 ```bash
-./cosmosvanity --contains gener
+./stargazevanity --endswith 8888
 ```
 
-Find an address consisting of letters only (e.g. cosmos1rfqkejeaxlxwtjxucnrathlzgnvgcgldzmuxxe)
+Find an address containing the substring "gener" (e.g. stars1z39wgener7azgh22s5a3pyswtnjkx2w0hvn3rv)
 ```bash
-./cosmosvanity --letters 38
+./stargazevanity --contains gener
 ```
 
-Find an address with at least 26 digits (e.g. cosmos1r573c4086585u084926726x535y3k2ktxpr88l)
+Find an address consisting of letters only (e.g. stars1rfqkejeaxlxwtjxucnrathlzgnvgcgldzmuxxe)
 ```bash
-./cosmosvanity --digits 26
+./stargazevanity --letters 38
+```
+
+Find an address with at least 26 digits (e.g. stars1r573c4086585u084926726x535y3k2ktxpr88l)
+```bash
+./stargazevanity --digits 26
 ```
 
 Generate 5 addresses (the default is 1)
 ```bash
-./cosmosvanity -n 5
+./stargazevanity -n 5
 ```
 
 Restrict to using only 1 CPU thread. This value defaults to the number of CPUs available.
 ```bash
-./cosmosvanity --cpus 1
+./stargazevanity --cpus 1
 ```
 
 Combine flags introduced above
 ```bash
-./cosmosvanity --contains 8888 --startswith a --endswith c
+./stargazevanity --contains 8888 --startswith a --endswith c
 ```
